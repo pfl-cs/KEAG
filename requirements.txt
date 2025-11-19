@@ -1,0 +1,12 @@
+setuptools
+yacs
+numpy
+scipy
+matplotlib
+seaborn
+scikit-learn
+pandas
+torch
+pytorch_lightning
+torch_geometric
+tqdm
