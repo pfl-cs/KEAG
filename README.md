@@ -11,7 +11,7 @@ We propose KEAG, a novel framework that exploits random Fourier features for rep
 ```
 
 ## Dataset
-We have provided a small Gaussian dataset for testing, located at 'KEAG/data/guassian/2M'.
+We have provided a small Gaussian dataset for testing, located at 'KEAG/data/GAU/2M'.
 
 ## Environment setup
 We use the open-source libspatialindex library as the R-tree backend, with custom modifications to support specialized ChooseSubtree and Split operations. 
@@ -38,10 +38,10 @@ Suppose the current working directory is 'KEAG'. We provide three examples demon
 
 ### (1) Collect training data 
 
-To collect training data for the Split operation on the guassian-2M dataset, execute the following scripts:
+To collect training data for the Split operation on the gaussian-2M dataset, execute the following scripts:
 ```bash
 - cd libspatialindex/build/test
-- ./AccessGT -d guassian -s 2 -gt split
+- ./AccessGT -d GAU -s 2 -gt split
 ```
 Then, the training data is collected and saved to the dataset directory.
 
@@ -50,7 +50,7 @@ Then, the training data is collected and saved to the dataset directory.
 Suppose you want to train the Split-version KEAG using the training data just collected. Execute the following scripts.
 ```bash
 - cd src
-- python run.py --task split --train_model True --data guassian --data_size 2
+- python run.py --task split --train_model True --data GAU --data_size 2
 ```
 The trained KEAG is exported as a TorchScript module and saved to the directory 'KEAG/ckpt'.
 
@@ -59,10 +59,10 @@ The trained KEAG is exported as a TorchScript module and saved to the directory 
 Suppose you want to use the trained model to select candidates for R-tree Split operations. Execute the following scripts.
 ```bash
 - cd libspatialindex/build/test
-- ./Eval -d guassian -s 2 -mt split -ua false
+- ./Eval -d GAU -s 2 -mt split -ua false
 ```
 Alternatively, you can directly use the TorchScript module we provided previously. Execute the following scripts.
 ```bash
 - cd libspatialindex/build/test
-- ./Eval -d guassian -s 2 -mt split -ua true
+- ./Eval -d GAU -s 2 -mt split -ua true
 ```
